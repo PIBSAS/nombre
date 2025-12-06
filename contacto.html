@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos - Matemáticas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Departamento de Matemáticas</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="archivos.html">Archivos</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-section">
+            <h2>Contactos del Equipo</h2>
+            
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <h3>Profesor Principal</h3>
+                    <div class="contact-info">
+                        <p><strong>Nombre:</strong> Dr. Alejandro Rodríguez</p>
+                        <p><strong>Especialidad:</strong> Análisis Matemático</p>
+                        <p><strong>Correo:</strong> <a href="mailto:alejandro.rodriguez@universidad.edu">alejandro.rodriguez@universidad.edu</a></p>
+                        <p><strong>Despacho:</strong> Edificio C, Oficina 204</p>
+                        <p><strong>Horario de atención:</strong> Lunes y Miércoles 10:00-12:00</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Ayudante de Cátedra</h3>
+                    <div class="contact-info">
+                        <p><strong>Nombre:</strong> Lic. María González</p>
+                        <p><strong>Especialidad:</strong> Álgebra Lineal</p>
+                        <p><strong>Correo:</strong> <a href="mailto:maria.gonzalez@universidad.edu">maria.gonzalez@universidad.edu</a></p>
+                        <p><strong>Despacho:</strong> Edificio C, Oficina 108</p>
+                        <p><strong>Horario de atención:</strong> Martes y Jueves 14:00-16:00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="links-section">
+            <h2>Enlaces Importantes</h2>
+            <div class="links-grid">
+                <a href="https://campusvirtual.universidad.edu" class="link-card" target="_blank">
+                    <h3>🏫 Campus Virtual</h3>
+                    <p>Acceso a materiales, foros y calificaciones</p>
+                </a>
+                
+                <a href="https://drive.google.com" class="link-card" target="_blank">
+                    <h3>📚 Drive de Materiales</h3>
+                    <p>Bibliografía complementaria y ejercicios</p>
+                </a>
+                
+                <a href="https://meet.google.com" class="link-card" target="_blank">
+                    <h3>💬 Google Meet</h3>
+                    <p>Sala de consultas virtuales</p>
+                </a>
+                
+                <a href="https://github.com" class="link-card" target="_blank">
+                    <h3>💻 Repositorio GitHub</h3>
+                    <p>Códigos y proyectos de la materia</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="quick-contact">
+            <h2>Contacto Rápido</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" placeholder="Tu nombre">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Correo:</label>
+                    <input type="email" id="email" placeholder="tu@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Asunto:</label>
+                    <select id="subject">
+                        <option value="">Selecciona un asunto</option>
+                        <option value="consulta">Consulta académica</option>
+                        <option value="tutoria">Solicitud de tutoría</option>
+                        <option value="material">Pedido de material</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Mensaje:</label>
+                    <textarea id="message" rows="4" placeholder="Escribe tu mensaje aquí..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Enviar Mensaje</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="nav-footer">
+        <a class="nav-btn" href="archivos.html">⬅ Archivos</a>
+        <a class="nav-btn" href="index.html">🏠 Inicio</a>
+        <a class="nav-btn" href="#">⬆ Arriba</a>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
