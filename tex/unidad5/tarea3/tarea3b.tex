@@ -1,0 +1,124 @@
+ \documentclass[spanish, a4paper, 12pt]{report}
+\usepackage[activeacute,spanish,es-lcroman]{babel}
+\spanishdecimal{.}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} %Pone bien los signos de pregunta.
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+\usepackage{wasysym}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{comment}
+\usepackage{framed}
+\usepackage{xcolor}
+\usepackage{footnote}
+%\usepackage[colorlinks]{hyperref}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multicol}
+\setlength\columnsep{8mm}
+\usepackage[all]{xy}
+\usepackage{pdfpages} %Permite insertar otros pdf o pginas sueltas de un pdf.
+\usepackage{pifont}
+\usepackage{enumitem}
+\usepackage{hyperref}
+%--------------------------------
+\addto\captionsspanish{
+\def\tablename{Tabla}
+}
+%--------------------------------
+\topmargin = -1.25cm
+\headheight = 12.766mm
+\oddsidemargin = -1.25cm
+\evensidemargin = -1.25cm
+\textwidth = 17.2cm
+\textheight = 23.88cm
+\footskip = 14.1mm
+\parskip = 1mm
+%------Para los pdf digitales------------------------------------------
+\usepackage{hyperref} %Genera un pdf con hipervínculos; se pueden programar colores para distintos hipervínculos; acá abajo se dejan todos en negro
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue
+}
+%--------------------------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\fancyhead[R]{\resizebox{8cm}{!}{\textsc{Análisis Matemático I (2012), Ingeniería en Electrónica}}}
+%---------abreviaturas cómodas-----------------------
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\LL}{{\mathbb L}}
+\newcommand{\RenR}[2]{\mathbb{R}^{#1}\longrightarrow \mathbb{R}^{#2}} %Para poner funciones de R^n en R^m
+%--------------------------------
+%Control de viudas y hurfanas
+\clubpenalty=10000
+\widowpenalty=10000
+%------------------------------------------------
+%\renewcommand{\sen}{\sen} 
+\newcommand{\cuthere}{%
+\noindent
+\raisebox{-2.8pt}[0pt][0.75\baselineskip]{\small\ding{34}}
+\unskip{\tiny\dotfill}
+}
+%------------------------------------------------
+\renewcommand{\theenumi}{\textbf{Problema \arabic{enumi}.}}
+\renewcommand{\labelenumi}{\theenumi}
+\renewcommand{\theenumiii}{(\roman{enumiii})}
+\renewcommand{\labelenumiii}{\theenumiii}
+%-------------------------------------------------
+\newcommand{\encabezados}{
+\fancypagestyle{plain}{
+\fancyhf{}
+\fancyhead[R]{\resizebox{8cm}{!}{\textsc{Análisis Matemático I (2012), Ingeniería en Electr\'onica}}}
+}
+}
+\begin{document}
+%----------------TEMA 1-----------------------------------
+%\encabezados
+%\begin{center}
+%\textsc{Recuperatorio Parcial 3}\\
+%\textsc{Comisión A3}\\
+%25/11/2025
+%\end{center}
+%\vspace{-.5cm}
+%\hrulefill
+%
+%\hspace{-2mm}\fbox{\parbox{0.96\linewidth}{Todas las respuestas deben estar \textbf{justificadas}. Los cálculos deben ir acompañados de explicaciones escritas que aclaren su significado. Un resultado suelto, no acompañado de explicación se considerará como problema no resuelto. Nota de regularización: 3 ítems bien resueltos. Nota de promoción: 2 problemas completos (un $a)$ y un $b)$ bien resueltos).}}
+
+\begin{enumerate}\itemsep=.1cm \itemindent=27mm
+
+\item En un experimento, dos grupos de estudiantes trabajan con un sistema masa-resorte, cada uno. El resorte del grupo 1 responde al modelo \mbox{$f_1(t)=2\sin(0.6 t+0.93)$}. El resorte del grupo 2 responde al modelo \mbox{$f_2(t)=1.5\cos(0.8 t)+2 \sin(0.8 t)$}. 
+
+\includegraphics[width=\linewidth]{ImagenTest.png}
+
+Listas anidadas
+
+\begin{enumerate}
+\item Decidí si el gráfico corresponde a alguno de los dos modelos, explicando cómo te das cuenta y explicá también cuál de los dos resortes fue más apartado de su posición de equilibrio, en el instante en que fue liberado. 
+\item Explicá:
+	\begin{enumerate}[label=(\roman*)]
+	 \item ¿Cuál de los dos resortes fue lanzado con mayor velocidad?
+	 \item ¿Cuál de los dos tarda menos tiempo en hacer una oscilación completa?
+	 \item ¿Cuál de los dos llega a estirarse más al oscilar?
+	 \end{enumerate} 
+\end{enumerate}
+\end{enumerate}
+
+Algunas ecuaciones:
+
+$$
+\int_a^b f(x) dx=F(b)-F(a)
+$$
+
+La misma ecuación $\int_a^b f(x) dx=F(b)-F(a)$ en el medio del texto. 
+\end{document}

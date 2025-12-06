@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="html/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cstyle%3E@keyframes shake{0%25,100%25{transform:translate(0,0);}25%25{transform:translate(1px,-1px);}50%25{transform:translate(-1px,1px);}75%25{transform:translate(1px,1px);}}svg{animation:shake 0.4s infinite;transform-origin:center;}%3C/style%3E%3Cpath fill='%23ff2d2d' d='M400 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM128 64c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm0 96c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32c0-17.7 14.3-32 32-32zm0 128c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm96 160h-64c-17.7 0-32-14.3-32-32s14.3-32 32-32h64c17.7 0 32 14.3 32 32s-14.3 32-32 32zm128-32H272c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32h80c17.7 0 32 14.3 32 32v288c0 17.7-14.3 32-32 32z'/%3E%3C/svg%3E">
+    <title>Matemáticas</title>
+</head>
+
+<body class="index-body">
+    <button class="menu-toggle" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="menu-overlay"></div>
+    
+    <div class="container">
+        <aside class="sidebar">
+            <button class="close-menu" aria-label="Cerrar menú">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="sidebar-title"><i class="fas fa-link"></i> Enlaces de Interés</h2>
+            <ul class="sidebar-links">
+                <li><a href="https://www.geogebra.org" target="_blank"><i class="fas fa-chart-line"></i> GeoGebra</a></li>
+                <li><a href="https://www.geogebra.org/classic" target="_blank"><i class="fas fa-laptop-code"></i> GeoGebra Online</a></li>
+                <li><a href="https://geogebra.github.io/docs/manual/es/" target="_blank"><i class="fas fa-book"></i> Docs GeoGebra</a></li>
+                <li><a href="parciales.html" target="_blank"><i class="fas fa-file-alt"></i> Parciales Anteriores</a></li>
+                <li><a href="contacto.html" target="_blank"><i class="fas fa-envelope"></i> Contacto</a></li>
+                <li><a href="https://t.me/+jGLWQ8l1ydFjYWEx" target="_blank"><i class="fab fa-python"></i> El Club de Python</a></li>
+                <li><a href="https://t.me/tu_grupo" target="_blank"><i class="fab fa-telegram"></i> Telegram</a></li>
+            </ul>
+            
+            <div class="sidebar-info">
+                <h3><i class="fas fa-info-circle"></i> Información</h3>
+                <p>Recursos útiles para el estudio de matemáticas y programación.</p>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <h1 class="index-title"><i class="fas fa-book-open"></i> Guías Convertidas</h1>
+            
+            <div class="html-container"></div>
+
+            <div class="content-info">
+                <p><i class="fas fa-sync-alt"></i> Las guías se actualizan automáticamente</p>
+                <p><i class="fas fa-mobile-alt"></i> Compatible con dispositivos móviles</p>
+            </div>
+        </main>
+    </div>
+
+     <footer class="index-footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <a href="https://t.me/+fS798S91LF1lMmYx" target="_blank" class="footer-logo">
+                    <i class="fab fa-telegram fa-2x"></i>
+                    <span>Telegram</span>
+                </a>
+            </div>
+            
+            <div class="footer-center">
+                <div class="main-logo">
+                    <i class="fas fa-calculator fa-3x"></i>
+                    <p>Matemáicas 1</p>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <a href="https://t.me/+jGLWQ8l1ydFjYWEx" target="_blank" class="footer-logo">
+                    <i class="fab fa-python fa-2x"></i>
+                    <span>El Club de Python</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2023</span> - Guías Matemáticas - Universidad</p>
+            <p class="footer-sub">Todos los derechos reservados</p>
+        </div>
+    </footer>
+    
+    <script src="html/js/index.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const closeMenu = document.querySelector('.close-menu');
+        const sidebar = document.querySelector('.sidebar');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Evita scroll
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        menuOverlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        const sidebarLinks = document.querySelectorAll('.sidebar-links a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) {
+                    sidebar.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
