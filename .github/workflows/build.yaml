@@ -76,12 +76,13 @@ jobs:
             for ((d=0; d<DIR_DEPTH; d++)); do REL="../$REL"; done
 
             PREV=""
+            REPO_NAME=$(basename "$(pwd)")
             NEXT=""
 
             [ $i -gt 0 ] && PREV="${REL}${HTML_FILES[i-1]#html/}"
             [ $i -lt $((${#HTML_FILES[@]}-1)) ] && NEXT="${REL}${HTML_FILES[i+1]#html/}"
 
-            awk -v back="$PREV" -v home="/" -v next_file="$NEXT" '
+            awk -v back="$PREV" -v home="/$REPO_NAME/" -v next_file="$NEXT" '
               /<\/body>/ {
                   print "<footer class=\"nav-footer\">"
                   if(back!="") print "<a class=\"nav-btn\" href=\"" back "\">⬅ Back</a>"
