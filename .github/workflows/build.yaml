@@ -1,0 +1,140 @@
+name: Convert TEX to HTML and Build Index
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6.0.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
+
+      - name: Setup pandoc
+        uses: nikeee/setup-pandoc@master
+        
+      - name: Clean HTML output folder
+        run: |
+          rm -rf html
+          mkdir html
+
+      - name: Convert TEX to HTML
+        run: |
+          mkdir -p html/css
+          mkdir -p html/js
+          cp -r css/* html/css/
+          cp -r js/* html/js/
+          
+          find tex -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" \) | while read IMG ; do
+              OUT="html/${IMG#tex/}"
+              mkdir -p "$(dirname "$OUT")"
+              cp "$IMG" "$OUT"
+          done
+            
+          find tex -name "*.tex" | while read FILE ; do
+            OUT="html/${FILE#tex/}"
+            OUT="${OUT%.tex}.html"
+            mkdir -p "$(dirname "$OUT")"
+
+            DIR_DEPTH=$(dirname "$OUT" | tr -cd '/' | wc -c)
+            REL=""
+            for ((i=0; i<DIR_DEPTH; i++)); do REL="../$REL"; done
+
+            pandoc "$FILE" -s -o "$OUT" --mathjax
+
+            awk -v s="<script id=\"MathJax-script\" async src=\"https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js\"></script>" '
+              /<\/head>/ { print s; }
+              { print; }
+            ' "$OUT" > "$OUT.tmp"
+            mv "$OUT.tmp" "$OUT"
+
+            awk -v s="<script src=\"${REL}js/script.js\"></script>" '
+              /<\/body>/ { print s; }
+              { print; }
+            ' "$OUT" > "$OUT.tmp"
+            mv "$OUT.tmp" "$OUT"
+
+            awk -v s="<link rel=\"stylesheet\" href=\"${REL}css/style.css\" />" ' 
+              /<\/head>/ { print s; } 
+              { print } 
+            ' "$OUT" > "$OUT.tmp" 
+            mv "$OUT.tmp" "$OUT"
+          done
+
+          mapfile -t HTML_FILES < <(find html -name "*.html" | sort -V)
+          for i in "${!HTML_FILES[@]}"; do
+            FILE="${HTML_FILES[i]}"
+
+            DIR_DEPTH=$(dirname "$FILE" | tr -cd '/' | wc -c)
+            REL=""
+            for ((d=0; d<DIR_DEPTH; d++)); do REL="../$REL"; done
+
+            PREV=""
+            NEXT=""
+
+            [ $i -gt 0 ] && PREV="${REL}${HTML_FILES[i-1]#html/}"
+            [ $i -lt $((${#HTML_FILES[@]}-1)) ] && NEXT="${REL}${HTML_FILES[i+1]#html/}"
+
+            awk -v back="$PREV" -v home="/matematicas/" -v next_file="$NEXT" '
+              /<\/body>/ {
+                  print "<footer class=\"nav-footer\">"
+                  if(back!="") print "<a class=\"nav-btn\" href=\"" back "\">⬅ Back</a>"
+                  print "<a class=\"nav-btn\" href=\"" home "\">Home</a>"
+                  if(next_file!="") print "<a class=\"nav-btn\" href=\"" next_file "\">Next ➡</a>"
+                  print "</footer>"
+              }
+              { print }
+            ' "$FILE" > "$FILE.tmp"
+
+            mv "$FILE.tmp" "$FILE"
+          done
+
+      - name: Generate list.json
+        run: |
+          echo "[" > list.json
+          FIRST=1
+          find html -name "*.html" | while read FILE ; do
+            PRETTY=$(echo "$FILE" | sed 's/html\///; s/\.html//; s|/| - |g')
+            ENTRY="{\"file\":\"$FILE\",\"pretty\":\"$PRETTY\"}"
+            if [ $FIRST -eq 1 ]; then
+              FIRST=0
+            else
+              echo "," >> list.json
+            fi
+            echo "$ENTRY" >> list.json
+          done
+          echo "]" >> list.json
+
+      - name: Commit and push
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@users.noreply.github.com"
+          git add .
+          git diff --cached --quiet || git commit -m "Rebuild HTML from TEX"
+          git push
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v4.0.0
+        with:
+          path: .
+  
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4.0.5
