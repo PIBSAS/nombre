@@ -24,6 +24,19 @@ jobs:
           rm -rf html
           mkdir html
 
+      - name: Apply pending edits from .edits (if any)
+        run: |
+          if [ -d ".edits" ]; then
+            echo "Found .edits, applying..."
+            rsync -av --remove-source-files .edits/ ./ 
+            find .edits -type f -delete || true
+            find .edits -type d -empty -delete || true
+            git add -A
+            git commit -m "Apply .edits (from admin) [ci skip]" || echo "No changes to commit"
+          else
+            echo "No .edits found"
+          fi
+
       - name: Convert TEX to HTML
         run: |
           mkdir -p html/css
