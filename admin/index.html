@@ -1,72 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Admin — Editor TEX (clásico)</title>
-<link rel="stylesheet" href="blocks.css">
-<!-- MathJax -->
-<script>
-window.MathJax = {
-  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
-  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
-};
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" async></script>
+  <meta charset="UTF-8" />
+  <title>Admin</title>
+  <link rel="stylesheet" href="blocks.css" />
 </head>
 <body>
-  <header class="topbar">
-    <h1>Admin — Editor TEX</h1>
-    <nav class="top-actions">
-      <a href="../" target="_blank">Ver sitio</a>
-    </nav>
-  </header>
-
-  <main class="layout">
-    <aside class="panel left">
-      <div class="panel-head"><strong>Capítulos (list.json)</strong></div>
-      <div id="fileList" class="file-list"></div>
-      <div class="panel-foot">
-        <button id="btnNew">Crear nuevo (ruta TEX)</button>
-      </div>
-    </aside>
-
-    <section class="panel editor-area">
-      <div class="editor-head">
-        <div><strong id="currentPath">Ningún archivo</strong></div>
-        <div id="status" class="status"></div>
-      </div>
-
-      <div class="editor-controls">
-        <button id="btnGuardar" class="primary">Generar .edits (descargar)</button>
-        <button id="btnOpenUpload">Abrir subida GitHub</button>
-        <button id="btnCopiar">Copiar al portapapeles</button>
-      </div>
-
-      <div class="editor-main">
-        <div class="blocks-column">
-          <div class="blocks-head"><strong>Bloques (editar)</strong></div>
-          <div id="blocksContainer" class="blocks-container"></div>
-
-          <div class="block-actions">
-            <button id="addText">Agregar párrafo</button>
-            <button id="addTitle">Agregar título</button>
-            <button id="clearAll">Vaciar</button>
-          </div>
-        </div>
-
-        <div class="preview-column">
-          <div class="blocks-head"><strong>Vista previa</strong></div>
-          <div id="preview" class="preview-box"></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="foot">
-    Flujo: seleccionar capítulo → editar bloques → Generar `.edits/tex/...` → Subir en GitHub → Action aplica cambios
-  </footer>
-
-  <script type="module" src="./admin.js"></script>
+  <h1>Editor de Contenido</h1>
+  <div id="file-list"></div>
+  <div id="editor"></div>
+  <button id="save-btn">Guardar</button>
+  <script src="blocks.js"></script>
+  <script src="admin.js"></script>
 </body>
 </html>
+
