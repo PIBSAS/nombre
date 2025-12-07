@@ -1,0 +1,19 @@
+/* admin/blocks.css - estilo mínimo y clásico */
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; margin:0; background:#f6f7fb; color:#111; }
+.topbar { padding:12px 16px; display:flex; align-items:center; gap:12px; background:#fff; border-bottom:1px solid #eee; }
+.topbar h1 { margin:0; font-size:18px; }
+.layout { display:grid; grid-template-columns:320px 1fr; gap:12px; padding:12px; }
+.panel { background:#fff; border-radius:8px; padding:12px; box-shadow:0 6px 18px rgba(18,38,63,0.04); }
+.file-list { max-height:62vh; overflow:auto; }
+.file-item { padding:8px; cursor:pointer; border-radius:6px; }
+.file-item:hover { background:#f0f6ff; }
+.editor-area .editor-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.editor-controls { margin-bottom:8px; display:flex; gap:8px; }
+.primary { background:#0a66c2; color:#fff; border:none; padding:8px 10px; border-radius:6px; cursor:pointer; }
+.blocks-container { min-height:50vh; max-height:65vh; overflow:auto; padding:6px; border:1px dashed #e6eefc; background:#fbfdff; }
+.block { border:1px solid #e6eefc; padding:8px; margin:8px 0; border-radius:6px; background:#fff; display:flex; gap:8px; align-items:flex-start; }
+.block textarea { width:100%; min-height:80px; resize:vertical; font-family:monospace; font-size:13px; padding:6px; border:1px solid #d7e1f3; border-radius:4px; }
+.block-ctrl { display:flex; flex-direction:column; gap:6px; }
+.block-ctrl button { font-size:12px; padding:4px 6px; border-radius:6px; }
+.preview-column .preview-box, .preview-box { min-height:50vh; padding:12px; border:1px solid #eee; background:#fff; overflow:auto; }
+.foot { padding:12px; text-align:center; font-size:13px; color:#666; }
