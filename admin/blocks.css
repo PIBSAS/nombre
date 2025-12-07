@@ -1,3 +1,15 @@
-.block { border:1px solid #aaa; margin:10px 0; padding:10px; }
-.block textarea { width:100%; height:120px; }
-.block .title-input { width:100%; font-size:1.3em; }
+.block {
+  border: 1px solid #aaa;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.block textarea {
+  width: 100%;
+  height: 120px;
+}
+
+.block .title-input {
+  width: 100%;
+  font-size: 1.3em;
+}
